@@ -13,3 +13,43 @@
  *= require_tree .
  *= require_self
  */
+@import "font-awesome-sprockets";
+@import "font-awesome";
+//  @import "bootstrap";
+body {
+  margin: 0;
+  padding: 0;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  height: 60px;
+}
+
+.nav-logo-link {
+  text-decoration: none;
+  color: #4E443F;
+  font-size: 36px;
+}
+.navbar {
+  margin: 0;
+  display: flex;
+  list-style: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: gray;
+  padding: 0 5px;
+}
+
+.active {
+  color: #ff6600;
+}
+
+.footer {
+  background-color: #4E443F;
+  height: 60px;
+}
