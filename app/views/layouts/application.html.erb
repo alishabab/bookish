@@ -17,17 +17,28 @@
         <div class="nav-logo">
           <a href="#" class="nav-logo-link">Bookish</a>
         </div>
+        <% if user_signed_in?%>
         <ul class="navbar">
           <li class="nav-item "><a href="#" class="nav-link active">Home</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Drama</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Fairy Tale</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Sci-Fi</a></li>
         </ul>
+        <%end%>
         <div class="navbar-right">
           <ul class="navbar">
-            <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Register</a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-search"></i></a></li>
+            <% if !user_signed_in? %>
+            <li class="nav-item"> <%= link_to 'Login', new_user_session_path, class: 'nav-link'%> </li>
+            <li class="nav-item"><%= link_to 'Register', new_user_registration_path, class: 'nav-link'%> </li>
+            <%end%>
+            <% if user_signed_in? %>
+            <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: 'nav-link' %></li>
+             <li class="nav-item"><%= link_to "Create New Article",new_article_path,class: "nav-link"%></li>
+             <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-search"></i></a></li>
+             <% end %>
+            
+           
+            
             
           </ul>
         </div>  

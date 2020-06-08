@@ -21,6 +21,7 @@ body {
   padding: 0;
 }
 nav {
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,6 +36,7 @@ nav {
 }
 .navbar {
   margin: 0;
+  padding: 0;
   display: flex;
   list-style: none;
 }
