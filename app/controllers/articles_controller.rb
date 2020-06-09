@@ -2,10 +2,10 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
   def new
     @article = current_user.articles.build
-    # @category = @article.categories.build
     @categories = Category.all
   end
   def index
+    @categories = Category.order(priority: :desc)
     article_hash = Hash.new(0)
     Vote.all.each do |vote|
       article_hash[vote.ArticleId] += 1

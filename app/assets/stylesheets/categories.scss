@@ -1,3 +1,26 @@
 // Place all the styles related to the categories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.article-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.article-category-link {
+  text-decoration: none;
+  color: #ff6600;
+  padding-bottom: 5px;
+  box-shadow: inset 0px -3px 0px 0px #ff6600;
+}
+.article-body {
+  width: 48%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.article-text {
+  padding: 10px;
+}
+.article-pic {
+  width: 50%;
+  height: 200px;
+}

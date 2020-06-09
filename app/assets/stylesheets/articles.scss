@@ -30,11 +30,12 @@
 
 .category-article {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
 .category-article-item {
-  width: 23%;
+  width: 24%;
   position: relative;
 }
 
