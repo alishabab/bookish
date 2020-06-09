@@ -15,12 +15,31 @@
   width: 48%;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 10px;
 }
 
 .article-text {
+  width: 45%;
   padding: 10px;
+  a {
+    color: black;
+    text-decoration: none;
+  }
 }
+.article-text p {
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
 .article-pic {
   width: 50%;
   height: 200px;
+}
+
+@media(max-width: 900px) {
+  .article-body {
+    width: 98%;
+  }
 }
