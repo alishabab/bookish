@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.update(article_params)
     if @article.save
-      redirect_to @article
+      redirect_to @article, flash: {success: 'Article Edited Successfully'}
     end
   end
   def create
@@ -36,7 +36,9 @@ class ArticlesController < ApplicationController
       @article.categories.push(Category.find(category_id))
     end
     if @article.save
-      redirect_to @article
+       redirect_to @article, flash: {success: 'Article Created Successfully'}
+    else 
+       render :new 
     end
   end
 

@@ -10,8 +10,17 @@
   </head>
 
   <body>
+  <% unless flash.empty? %>
+    <script type="text/javascript">
+        <% flash.each do |f| %>
+        <% type = f[0].to_s %>
+        toastr['<%= type %>']('<%= f[1] %>');
+        <% end %>
+    </script>
+<% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+  
     <header> 
       <nav>
         <div class="nav-logo">
@@ -47,6 +56,10 @@
     <footer>
       <div class="footer">
         
+          <h1 class="footer-logo"> Bookish </h1>
+          <p> Design Credit: </p>
+          <p> Connect with Us </p>
+     
       </div>
     </footer>
     

@@ -8,6 +8,8 @@ gem 'bootstrap'
 gem 'devise'
 # jquery
 gem 'jquery-rails'
+#toastr 
+gem 'toastr-rails'
 # font awesome
 gem 'font-awesome-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require toastr
  */
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -59,8 +60,16 @@ a:hover {
 
 .footer {
   margin-top: 10px;
+  padding: 10px;
   background-color: #4E443F;
   height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  color: white;
 }
 
 //form
