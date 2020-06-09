@@ -11,6 +11,9 @@ gem 'jquery-rails'
 # font awesome
 gem 'font-awesome-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# for file upload
+gem "paperclip"
+
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

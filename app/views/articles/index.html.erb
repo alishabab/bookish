@@ -2,7 +2,11 @@
 <h1> Create first Article </h1>
 <%else%>
 <div class="top-article">
-  <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="book" class="article-img">
+ <% if @max_article.image.exists? %> 
+   <%= image_tag @max_article.image.url, class:"article-img" %><br/>
+    <%else%>
+   <img src="https://images.squarespace-cdn.com/content/v1/58d9d256c534a5f7a633c089/1492830820399-WHSNL47S3P42C60F5C8W/ke17ZwdGBToddI8pDm48kPryxVU0PrpVSFhErCKkCwlZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIv_Q9wpI0X4VodK35j8Qgx3-RJtZ6lSjgdErnFfTjAfIKMshLAGzx4R3EDFOm1kBS/dark+books+open+books" alt="", class="article-img">
+     <% end %>
   <div class="article-content"> 
   <%= link_to @max_article.Title, article_path(@max_article), class: "top-article-title" %>
   <p class="top-article-text"> <%= @max_article.Text %> </p>
@@ -13,7 +17,11 @@
 <% @categories.each do |category| %>
   <% if category.articles.last %>
   <div class="category-article-item">
-    <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="book" class="category-article-img">
+    <% if category.articles.last.image.exists? %>
+    <%= image_tag category.articles.last.image.url, class: "category-article-img"%>
+    <%else%>
+    <img src="https://images.squarespace-cdn.com/content/v1/58d9d256c534a5f7a633c089/1492830820399-WHSNL47S3P42C60F5C8W/ke17ZwdGBToddI8pDm48kPryxVU0PrpVSFhErCKkCwlZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIv_Q9wpI0X4VodK35j8Qgx3-RJtZ6lSjgdErnFfTjAfIKMshLAGzx4R3EDFOm1kBS/dark+books+open+books" alt="", class="category-article-img">
+    <%end%>
     <div class="category-article-content"> 
        
       <%= link_to category.articles.last.Title, article_path(category.articles.last), class: "category-article-title"%>

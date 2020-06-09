@@ -1,15 +1,24 @@
 <div class="article">
+<% if @article.image.exists? %> 
+   <%= image_tag @article.image.url, class:"article-pic" %><br/>
+<%else%>
+   <img src="https://images.squarespace-cdn.com/content/v1/58d9d256c534a5f7a633c089/1492830820399-WHSNL47S3P42C60F5C8W/ke17ZwdGBToddI8pDm48kPryxVU0PrpVSFhErCKkCwlZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIv_Q9wpI0X4VodK35j8Qgx3-RJtZ6lSjgdErnFfTjAfIKMshLAGzx4R3EDFOm1kBS/dark+books+open+books" alt="", class="article-pic">
+<% end %>
+ 
 <h3> Author: <%= @article.author.name  %> </h3>
 <h4> <%= @article.Title  %>  </h4>
 <p> <%= @article.Text %>  </p>
-</div>
+<div class="d-flex">
 <% if @article.author == current_user %>
-<%= link_to 'Edit', edit_article_path%>
+<%= link_to 'Edit', edit_article_path, class:'btn'%>
 <%end %>
 <% if is_upvoted? %>
   <%= button_to "Downvote", article_downvote_path(@article) %>
   <% else %>
- <%= button_to "Upvote", article_upvote_path(@article) %>
+ <%= button_to "Upvote", article_upvote_path(@article)%>
 <% end %>
+</div>
+</div>
+
 
 
