@@ -1,9 +1,22 @@
 <%= form_with model: @article do |f| %>
-  <div class="form-control">
+  <div class="container">
   <%= f.label :Title%>
   <%= f.text_field :Title %> </br>
   <%= f.label :Text %>
   <%= f.text_area :Text %> </br>
+  <%= f.label :Category %>
+   <ul class="category-list">
+  <% @categories.each do |category| %>
+      <li>
+        <%= check_box_tag 'category_ids[]', category.id -%>
+        <%= h category.name -%>
+      </li>
+  <% end %>
+</ul>
   <%= f.submit "Create" %>
   </div>
 <% end %>
+
+
+
+

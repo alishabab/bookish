@@ -1,8 +1,8 @@
 <div class="top-article">
   <img src="https://images.pexels.com/photos/46274/pexels-photo-46274.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="book" class="article-img">
   <div class="article-content"> 
-  <a class="top-article-title" href = "#"> This is title</a>
-  <p class="top-article-text"> This is article body</p>
+  <%= link_to @max_article.Title, article_path(@max_article), class: "top-article-title" %>
+  <p class="top-article-text"> <%= @max_article.Text %> </p>
   </div>
 </div>
 

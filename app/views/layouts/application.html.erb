@@ -15,14 +15,14 @@
     <header> 
       <nav>
         <div class="nav-logo">
-          <a href="#" class="nav-logo-link">Bookish</a>
+          <%= link_to 'Bookish',root_path,class: "nav-logo-link" %>
         </div>
         <% if user_signed_in?%>
         <ul class="navbar">
-          <li class="nav-item "><a href="#" class="nav-link active">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Drama</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Fairy Tale</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Sci-Fi</a></li>
+        <li class="nav-item "><a href="#" class="nav-link active">Home</a></li>
+         <% all_categories.each do |category| %>
+           <li class="nav-item "><%= link_to category.name, category_path(category), class: "nav-link"%></li>
+         <%end%>
         </ul>
         <%end%>
         <div class="navbar-right">

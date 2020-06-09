@@ -1,0 +1,9 @@
+<%= form_with model: @article do |f| %>
+  <div class="form-control">
+  <%= f.label :Title%>
+  <%= f.text_field :Title %> </br>
+  <%= f.label :Text %>
+  <%= f.text_area :Text %> </br>
+  <%= f.submit "Create" %>
+  </div>
+<% end %>

@@ -3,4 +3,13 @@
 <h4> <%= @article.Title  %>  </h4>
 <p> <%= @article.Text %>  </p>
 </div>
-<%= link_to 'Upvote'%>
+<% if @article.author == current_user %>
+<%= link_to 'Edit', edit_article_path%>
+<%end %>
+<% if is_upvoted? %>
+  <%= button_to "Downvote", article_downvote_path(@article) %>
+  <% else %>
+ <%= button_to "Upvote", article_upvote_path(@article) %>
+<% end %>
+
+
