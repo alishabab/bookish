@@ -1,0 +1,17 @@
+<div class="article-container">
+<% @articles.each do |article| %>
+
+  <div class="article-body">
+    <% if article.image.exists? %> 
+      <%= image_tag article.image.url, class:"article-pic" %><br/>
+    <%else%>
+    <img src="https://images.squarespace-cdn.com/content/v1/58d9d256c534a5f7a633c089/1492830820399-WHSNL47S3P42C60F5C8W/ke17ZwdGBToddI8pDm48kPryxVU0PrpVSFhErCKkCwlZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIv_Q9wpI0X4VodK35j8Qgx3-RJtZ6lSjgdErnFfTjAfIKMshLAGzx4R3EDFOm1kBS/dark+books+open+books" alt="", class="article-pic">
+    <% end %>
+    <div class="article-text">
+      <%=link_to @category.name, category_path(@category), class: "article-category-link"%>
+      <h4>  <%= link_to article.Title, article_path(article) %></h4>
+      <p><%=article.Text %></p>
+    </div>
+ </div>
+ <%end%>
+</div>

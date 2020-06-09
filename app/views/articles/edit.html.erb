@@ -1,0 +1,16 @@
+<%= form_with model: @article, html: {multipart: true} do |f| %>
+  <div class="form-control">
+  <%= f.label :Title%>
+  <%= f.text_field :Title %> </br>
+  <%= f.label :Text %>
+  <%= f.text_area :Text %> </br>
+  <% if @article.image.exists? %>
+      <%= image_tag @article.image.url,class:"article-pic"%><br/>
+  <% end %>
+  <%= f.label :image, "Attach a New Image" %><br />
+  <%= f.file_field :image %>
+  <%= f.label :Category %> </br>
+  <%= f.submit "Update" %> </br>
+  </br>
+  </div>
+<% end %>
