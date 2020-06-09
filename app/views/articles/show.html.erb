@@ -14,7 +14,7 @@
 <% if @article.author == current_user %>
 <%= link_to 'Edit', edit_article_path, class:'btn'%>
 <%end %>
-<% if is_upvoted? %>
+<% if upvoted? %>
   <%= button_to "Downvote", article_downvote_path(@article) %>
   <% else %>
  <%= button_to "Upvote", article_upvote_path(@article)%>
