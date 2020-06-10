@@ -10,19 +10,17 @@
   </head>
 
   <body>
-  <% unless flash.empty? %>
-    <script type="text/javascript">
-        <% flash.each do |f| %>
-        <% type = f[0].to_s %>
-        toastr['<%= type %>']('<%= f[1] %>');
-        <% end %>
-    </script>
+<% unless flash.empty? %>
+   <script type="text/javascript">
+      <% flash.each do |f| %>
+    <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+   	 toastr['<%= type %>']('<%= f[1] %>');
+   <% end %>
+   </script>
 <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   
     <header> 
-      <nav>
+      <nav> 
         <div class="nav-logo">
           <%= link_to 'Bookish',root_path,class: "nav-logo-link" %>
         </div>
@@ -41,8 +39,10 @@
             <li class="nav-item"><%= link_to 'Register', new_user_registration_path, class: 'nav-link'%> </li>
             <%end%>
             <% if user_signed_in? %>
+            <li class="nav-item"><%= link_to "My Articles",my_articles_path,class: "nav-link"%></li>
+            <li class="nav-item"><%= link_to "Create New Article",new_article_path,class: "nav-link"%></li>
             <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: 'nav-link' %></li>
-             <li class="nav-item"><%= link_to "Create New Article",new_article_path,class: "nav-link"%></li>
+             
              <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-search"></i></a></li>
              <% end %>
             
@@ -57,8 +57,18 @@
       <div class="footer">
         
           <h1 class="footer-logo"> Bookish </h1>
-          <p> Design Credit: </p>
-          <p> Connect with Us </p>
+          <div>
+          
+          <p> Design Idea By: <em> <a href="https://www.behance.net/sakwadesignstudio" class="footer-link"> Nelson Sakwa on Behance </a> </em></p>
+          <p> Developed By: <em><a href="https://alishabab.github.io" class="footer-link"> Shabab Ali </a></em> </p>
+
+            
+           </div>
+         <div class="footer-social">
+            <a href="https://twitter.com/shabab_ali" class="footer-link"> <i class="fab fa-twitter"> </i> </a>
+            <a href="https://github.com/alishabab" class="footer-link"> <i class="fab fa-github"> </i> </a>
+            <a href="https://instagram.com/shabab.alii" class="footer-link"> <i class="fab fa-instagram"> </i> </a>
+         </div>
      
       </div>
     </footer>

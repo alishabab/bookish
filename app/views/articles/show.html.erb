@@ -12,7 +12,7 @@
  <%= @article.votes.count %>
 <div class="d-flex">
 <% if @article.author == current_user %>
-<%= link_to 'Edit', edit_article_path, class:'btn'%>
+<%= link_to 'Edit', edit_article_path(@article), class:'btn'%>
 <%end %>
 <% if upvoted? %>
   <%= button_to "Downvote", article_downvote_path(@article) %>

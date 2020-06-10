@@ -47,6 +47,10 @@ a:hover {
   color: #f60;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .nav-logo-link {
   text-decoration: none;
   color: #4e443f;
@@ -71,10 +75,20 @@ a:hover {
   margin-top: 10px;
   padding: 10px;
   background-color: #4e443f;
-  height: 60px;
+  min-height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.footer-social {
+  color: white;
+  font-size: 30px;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
 }
 
 .footer-logo {
@@ -126,4 +140,10 @@ input[type=submit]:hover,
 
 .d-flex {
   display: flex;
+}
+
+@media(max-width: 760px) {
+  .footer {
+    flex-direction: column;
+  }
 }

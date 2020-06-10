@@ -1,6 +1,6 @@
 <div class="article-container">
 <% if !@has_articles %>
-<h3> No Articles yet !! Write one <%= link_to 'here', new_article_path %> </h3>
+<h3> <%= link_to 'Write your first article',new_article_path %> </h3>
 <% end %>
 <% @articles.each do |article| %>
 
@@ -11,10 +11,10 @@
     <img src="https://images.squarespace-cdn.com/content/v1/58d9d256c534a5f7a633c089/1492830820399-WHSNL47S3P42C60F5C8W/ke17ZwdGBToddI8pDm48kPryxVU0PrpVSFhErCKkCwlZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIv_Q9wpI0X4VodK35j8Qgx3-RJtZ6lSjgdErnFfTjAfIKMshLAGzx4R3EDFOm1kBS/dark+books+open+books" alt="", class="article-pic">
     <% end %>
     <div class="article-text">
-      <%=link_to @category.name, category_path(@category), class: "article-category-link"%>
       <h4>  <%= link_to article.Title, article_path(article) %></h4>
       <p><%=article.Text %></p>
       <p> Written By: <i><%= article.author.name %> </i> </p>
+      <%= link_to 'Edit', edit_article_path(article), class:'btn'%>
     </div>
  </div>
  <%end%>
