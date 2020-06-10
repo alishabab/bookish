@@ -13,11 +13,18 @@
 <div class="d-flex">
 <% if @article.author == current_user %>
 <%= link_to 'Edit', edit_article_path(@article), class:'btn'%>
+<%= link_to 'Delete', article_path(@article),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, class:'btn' %>
 <%end %>
-<% if upvoted? %>
-  <%= button_to "Downvote", article_downvote_path(@article) %>
+<% if upvoted?(@article) %>
+   <%= link_to article_downvote_path(@article), method: :post,class:'btn' do %>
+          Downvote <i class="fas fa-thumbs-down"></i>
+        <% end %>
   <% else %>
- <%= button_to "Upvote", article_upvote_path(@article)%>
+ <%= link_to article_upvote_path(@article), method: :post,class:'btn' do %>
+          Upvote <i class="fas fa-thumbs-up"></i>
+       <% end %>
 <% end %>
 
 </div>

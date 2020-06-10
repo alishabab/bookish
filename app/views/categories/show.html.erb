@@ -15,6 +15,17 @@
       <h4>  <%= link_to article.Title, article_path(article) %></h4>
       <p><%=article.Text %></p>
       <p> Written By: <i><%= article.author.name %> </i> </p>
+      <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+      <%= article.votes.count %>
+      <% if upvoted?(article) %>
+        <%= link_to article_downvote_path(article), method: :post,class:'btn' do %>
+          Downvote <i class="fas fa-thumbs-down"></i>
+        <% end %>
+     <% else %>
+       <%= link_to article_upvote_path(article), method: :post,class:'btn' do %>
+          Upvote <i class="fas fa-thumbs-up"></i>
+       <% end %>
+     <% end %>
     </div>
  </div>
  <%end%>

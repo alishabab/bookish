@@ -20,12 +20,19 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
     @article = Article.find(params[:id])
   end
 
   def update
+    @categories = Category.all
     @article = Article.find(params[:id])
     @article.update(article_params)
+    @article.categories.destroy_all
+    category_ids = params[:category_ids]
+    category_ids&.each do |category_id|
+      @article.categories.push(Category.find(category_id))
+    end
     redirect_to @article, flash: { success: 'Article Edited Successfully' } if @article.save
   end
 
@@ -53,6 +60,14 @@ class ArticlesController < ApplicationController
   def my_articles
     @articles = current_user.articles
     @has_articles = true if @articles.length.positive?
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    return unless @article.author == current_user
+
+    @article.destroy
+    redirect_to my_articles_path, flash: { success: 'Article Deleted' }
   end
 
   private
