@@ -20,20 +20,24 @@
 <% end %>
   
     <header> 
-      <nav> 
-        <div class="nav-logo">
-          <%= link_to 'Bookish',root_path,class: "nav-logo-link" %>
-        </div>
-        <% if user_signed_in?%>
+      <nav class="navbar"> 
+        <div class="navbar-left">
+        <span class="navbar-toggle" id="js-navbar-toggle">
+            <i class="fas fa-bars"></i>
+        </span>  
+          <%= link_to 'Bookish',root_path,class: "nav-logo"%>
        
-        <ul class="navbar">
-         <% all_categories.each do |category| %>
-           <li class="nav-item"><%= link_to category.name, category_path(category), class: "nav-link #{'active' if request.original_url == category_url(category)}" %></li>
-         <%end%>
-        </ul>
-        <%end%>
+           <% if user_signed_in?%>
+       
+             <ul class="left-nav" id="left-menu">
+             <% all_categories.each do |category| %>
+               <li class="nav-item"><%= link_to category.name, category_path(category), class: "nav-link #{'active' if request.original_url == category_url(category)}" %></li>
+              <%end%>
+            </ul>
+            <%end%>
+         </div>
         <div class="navbar-right">
-          <ul class="navbar">
+          <ul class="right-nav" id="right-menu">
             <% if !user_signed_in? %>
             <li class="nav-item"> <%= link_to 'Login', new_user_session_path, class: 'nav-link'%> </li>
             <li class="nav-item"><%= link_to 'Register', new_user_registration_path, class: 'nav-link'%> </li>
@@ -42,10 +46,8 @@
             <li class="nav-item"><%= link_to "My Articles",my_articles_path,class: "nav-link"%></li>
             <li class="nav-item"><%= link_to "Create New Article",new_article_path,class: "nav-link"%></li>
             <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: 'nav-link' %></li>
-             
-             <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-search"></i></a></li>
+            <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-search"></i></a></li>
              <% end %>
-            
             
           </ul> 
         </div>
@@ -69,9 +71,7 @@
             <a href="https://github.com/alishabab" class="footer-link"> <i class="fab fa-github"> </i> </a>
             <a href="https://instagram.com/shabab.alii" class="footer-link"> <i class="fab fa-instagram"> </i> </a>
          </div>
-     
       </div>
     </footer>
-    
   </body>
 </html>
