@@ -30,6 +30,7 @@ RSpec.describe ArticlesController, type: :controller do
         post :create, params: { article: { Title: 'sjdjsbdjj', Text: 'dsjdbsadada' }, category_ids: [@category.id] }
         expect(response).to redirect_to(article_url(Article.first.id))
         expect(response).to have_http_status(302)
+        expect(flash[:success]).to match(/Article Created Successfully/)
       end
     end
     context 'with invalid params' do
@@ -46,6 +47,7 @@ RSpec.describe ArticlesController, type: :controller do
       delete :destroy, params: { id: @article.id }
       expect(response).to redirect_to(my_articles_url)
       expect(response).to have_http_status(302)
+      expect(flash[:success]).to match(/Article Deleted/)
     end
   end
 end
