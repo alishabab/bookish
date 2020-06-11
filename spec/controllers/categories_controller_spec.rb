@@ -11,12 +11,9 @@ RSpec.describe CategoriesController, type: :controller do
 
   describe 'GET #show of categories' do
     it 'gets the articles from that category' do
-      get :show, params: {id: @category.id}
+      get :show, params: { id: @category.id }
       expect(response).to be_successful
       expect(response).to have_http_status(200)
     end
   end
-
-
-
 end

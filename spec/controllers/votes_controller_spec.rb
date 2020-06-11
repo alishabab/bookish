@@ -33,6 +33,5 @@ RSpec.describe VotesController, type: :controller do
       expect(response).to redirect_to('/')
       expect(response).to have_http_status(302)
     end
-end
-
+  end
 end

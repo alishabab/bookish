@@ -41,7 +41,8 @@ ul {
 //   padding: 0 10px;
 //   height: 60px;
 // }
-.navbar, .navbar-left {
+.navbar,
+.navbar-left {
   padding: 5px;
   display: flex;
   justify-content: space-between;
@@ -53,7 +54,7 @@ ul {
   position: absolute;
   top: 10px;
   right: 20px;
-  cursor: pointer; 
+  cursor: pointer;
   color: #f60;
   font-size: 24px;
 }
@@ -72,7 +73,8 @@ a:hover {
   font-size: 36px;
 }
 
-.left-nav, .right-nav {
+.left-nav,
+.right-nav {
   display: flex;
 }
 
@@ -83,7 +85,6 @@ a:hover {
 .active-nav {
   display: block;
 }
-
 
 .nav-link {
   text-decoration: none;
@@ -175,11 +176,13 @@ input[type=submit]:hover,
     display: block;
   }
 
-  .navbar, .navbar-left {
+  .navbar,
+  .navbar-left {
     display: block;
   }
 
-  .left-nav, .right-nav {
+  .left-nav,
+  .right-nav {
     margin-left: 0;
     display: none;
   }
@@ -188,9 +191,9 @@ input[type=submit]:hover,
     display: block;
   }
 
-  .left-nav li, .right-nav li {
+  .left-nav li,
+  .right-nav li {
     text-align: center;
     margin: 15px auto;
   }
- 
 }
