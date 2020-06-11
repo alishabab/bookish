@@ -1,8 +1,8 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   def new
-    @article = current_user.articles.build
     @categories = Category.all
+    @article = current_user.articles.build
   end
 
   def index
@@ -20,24 +20,34 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
     @article = Article.find(params[:id])
   end
 
   def update
+    @categories = Category.all
     @article = Article.find(params[:id])
     @article.update(article_params)
+    @article.categories.destroy_all
+    category_ids = params[:category_ids]
+    category_ids&.each do |category_id|
+      @article.categories.push(Category.find(category_id))
+    end
     redirect_to @article, flash: { success: 'Article Edited Successfully' } if @article.save
   end
 
   def create
+    @categories = Category.all
     @article = current_user.articles.build(article_params)
     category_ids = params[:category_ids]
-    category_ids.each do |category_id|
+    category_ids&.each do |category_id|
       @article.categories.push(Category.find(category_id))
     end
+
     if @article.save
       redirect_to @article, flash: { success: 'Article Created Successfully' }
     else
+      flash.now[:alert] = @article.errors.full_messages
       render :new
     end
   end
@@ -45,6 +55,19 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @vote = Vote.new
+  end
+
+  def my_articles
+    @articles = current_user.articles
+    @has_articles = true if @articles.length.positive?
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    return unless @article.author == current_user
+
+    @article.destroy
+    redirect_to my_articles_path, flash: { success: 'Article Deleted' }
   end
 
   private

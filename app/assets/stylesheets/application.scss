@@ -16,7 +16,6 @@
  */
 @import "font-awesome-sprockets";
 @import "font-awesome";
-//  @import "bootstrap";
 
 * {
   box-sizing: border-box;
@@ -34,27 +33,57 @@ ul {
   padding: 0;
 }
 
-nav {
-  margin: 0;
+// .navbar {
+//   margin: 0;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding: 0 10px;
+//   height: 60px;
+// }
+.navbar,
+.navbar-left {
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
-  height: 60px;
+}
+
+.navbar-toggle {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: #f60;
+  font-size: 24px;
 }
 
 a:hover {
   color: #f60;
 }
 
-.nav-logo-link {
+.text-center {
+  text-align: center;
+}
+
+.nav-logo {
   text-decoration: none;
   color: #4e443f;
   font-size: 36px;
 }
 
-.navbar {
+.left-nav,
+.right-nav {
   display: flex;
+}
+
+.left-nav {
+  margin-left: 100px;
+}
+
+.active-nav {
+  display: block;
 }
 
 .nav-link {
@@ -71,10 +100,20 @@ a:hover {
   margin-top: 10px;
   padding: 10px;
   background-color: #4e443f;
-  height: 60px;
+  min-height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.footer-social {
+  color: white;
+  font-size: 30px;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
 }
 
 .footer-logo {
@@ -126,4 +165,35 @@ input[type=submit]:hover,
 
 .d-flex {
   display: flex;
+}
+
+@media (max-width: 760px) {
+  .footer {
+    flex-direction: column;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar,
+  .navbar-left {
+    display: block;
+  }
+
+  .left-nav,
+  .right-nav {
+    margin-left: 0;
+    display: none;
+  }
+
+  .active-nav {
+    display: block;
+  }
+
+  .left-nav li,
+  .right-nav li {
+    text-align: center;
+    margin: 15px auto;
+  }
 }

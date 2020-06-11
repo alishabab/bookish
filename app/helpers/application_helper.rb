@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def upvoted?
-    @vote = Vote.find_by(UserId: current_user.id, ArticleId: params[:id])
+  def upvoted?(article)
+    @vote = Vote.find_by(UserId: current_user.id, ArticleId: article.id)
     if @vote
       true
     else
