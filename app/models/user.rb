@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :votes, foreign_key: 'UserId'
   has_many :articles, foreign_key: 'AuthorId'
-  validates :name, presence: true, length: { in: 2..20 }
+  validates :name, presence: true, length: { in: 3..20 }
   validates :email, presence: true, length: { in: 6..50 }, uniqueness: true
   validates :username, presence: true, length: { in: 3..20 }, uniqueness: true
 end
