@@ -9,6 +9,10 @@ module ApplicationHelper
   end
 
   def all_categories
-    Category.all
+    Category.all.limit(4)
+  end
+
+  def admin?
+    current_user == User.find_by(username: 'admin')
   end
 end

@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article, flash: { success: 'Article Created Successfully' }
     else
-      flash.now[:alert] = @article.errors.full_messages
+      flash[:error] = @article.errors.full_messages
       render :new
     end
   end

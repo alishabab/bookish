@@ -1,0 +1,14 @@
+<% if admin? %>
+  <%= form_with model: @category do |f| %>
+    <div class="container">
+    <%= f.label :name%>
+    <%= f.text_field :name %> <br>
+    <%= f.label :priority %>
+    <%= f.text_field :priority %> <br>
+    <%= f.submit "Create" %> <br>
+    <br>
+    </div>
+  <% end %>
+<%else%>
+  </h3> You Dont Have Access! </h3>
+<%end%>
