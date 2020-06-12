@@ -5,7 +5,7 @@
 > In this project, I developed a web application where a user can write articles about books. Application has RESTful routes. A user can sign up, login, create, edit and delete an article. Also user can see the articles by categories and written by others.
 > Logged in user can upvote, downvote an article. Article with most number of votes is displayed in top row of homepage.
 > The project is developed using Ruby on Rails and embedded ruby for templating.
-> Navbar is dynamicaly generated from categories
+> Navbar is dynamicaly generated from categories, only user with username as 'admin' can add or delete categories.
 > Unit tests and integration tests are written using RSpec and Capybara
 ![screenshot](screenshot.png)
 ## Built With
@@ -64,7 +64,7 @@ Then open a web page and go to [port 3000 on your local machine.](http://localho
 
 ### Deployment
 
-Application is deployed on heroku.
+Follow vendor specific instructions to deploy the application.
 
 ## Author
 
