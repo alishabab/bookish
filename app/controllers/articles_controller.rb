@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
     @categories = Category.all
     @article = Article.find(params[:id])
     @article.update(article_params)
-    @article.categories.destroy_all
+    @article.categories.delete_all
     category_ids = params[:category_ids]
     category_ids&.each do |category_id|
       @article.categories.push(Category.find(category_id))
