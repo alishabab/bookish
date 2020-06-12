@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @categories = Category.order(priority: :desc)
+    @categories = Category.includes(:articles).order(priority: :desc)
     article_hash = Hash.new(0)
     Vote.all.each do |vote|
       article_hash[vote.ArticleId] += 1
