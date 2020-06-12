@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .article-container {
-  width: 99%;
-  margin: 0 auto;
+  margin-bottom: 60px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -16,15 +16,15 @@
 }
 
 .article-body {
-  width: 48%;
+  width: 50%;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 10px;
 }
 
 .article-text {
-  width: 45%;
+  width: 50%;
   padding-left: 10px;
+  padding-top: 20px;
 
   a {
     color: black;
@@ -45,6 +45,6 @@
 
 @media (max-width: 900px) {
   .article-body {
-    width: 98%;
+    width: 100%;
   }
 }
