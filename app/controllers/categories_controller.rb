@@ -20,6 +20,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @count = 1
     @category = Category.find(params[:id])
     @articles = @category.articles.order(created_at: :desc)
     @has_articles = true if @articles.length.positive?
