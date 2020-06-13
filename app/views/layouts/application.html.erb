@@ -39,7 +39,7 @@
             <li class="nav-item"><%= link_to 'REGISTER', new_user_registration_path, class: 'nav-link'%> </li>
             <%end%>
             <% if user_signed_in? %>
-            <li class="nav-item"><%= link_to "MY ARTICLES",my_articles_path,class: "nav-link"%></li>
+            <li class="nav-item"><%= link_to "MY ARTICLES",my_articles_path,class: "nav-link #{'active' if request.original_url == my_articles_url}"%></li>
             <li class="nav-item"><%= link_to "CREATE NEW ARTICLE",new_article_path,class: "nav-link"%></li>
             <li class="nav-item"><%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete, class: 'nav-link' %></li>
             <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-search"></i></a></li>
