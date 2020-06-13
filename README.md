@@ -7,7 +7,9 @@
 > The project is developed using Ruby on Rails and embedded ruby for templating.
 > Navbar is dynamicaly generated from categories, only user with username as 'admin' can add or delete categories.
 > Unit tests and integration tests are written using RSpec and Capybara
-![screenshot](screenshot.png)
+![screenshot](screenshot_1.png)
+![screenshot](screenshot_2.png)
+
 ## Built With
 
 - Ruby v2.7.0
