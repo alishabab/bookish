@@ -33,7 +33,12 @@ class ArticlesController < ApplicationController
     category_ids&.each do |category_id|
       @article.categories.push(Category.find(category_id))
     end
-    redirect_to @article, flash: { success: 'Article Edited Successfully' } if @article.save
+    if @article.save
+      redirect_to @article, flash: { info: 'Article Edited Successfully' }
+    else
+      flash[:error] = @article.errors.full_messages
+      redirect_back fallback_location: '/'
+    end
   end
 
   def create
@@ -48,7 +53,7 @@ class ArticlesController < ApplicationController
       redirect_to @article, flash: { success: 'Article Created Successfully' }
     else
       flash[:error] = @article.errors.full_messages
-      render :new
+      redirect_to new_article_path
     end
   end
 
@@ -58,6 +63,7 @@ class ArticlesController < ApplicationController
   end
 
   def my_articles
+    @count = 1
     @articles = current_user.articles
     @has_articles = true if @articles.length.positive?
   end

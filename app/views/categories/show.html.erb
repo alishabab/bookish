@@ -35,7 +35,7 @@
       
         <div class="article-text">
         <%=link_to @category.name, category_path(@category), class: "article-category-link"%>
-        <h4>  <%= link_to article.Title, article_path(article) %></h4>
+        <h4>  <%= link_to article.Title, article_path(article), class: "article-title-link" %></h4>
         <p><%=article.Text %></p>
         <p> Written By: <i><%= article.author.name %> </i> </p>
         <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
