@@ -17,7 +17,7 @@
 - Gems used for testing: Capybara, Rspec-Rails, Shoulda-matchers and FactoryBot.
 
 ## Live Demo
-[Live Demo Link](https://shielded-river-22994.herokuapp.com/)
+[Live Demo Link](https://app-bookish.herokuapp.com/)
 
 
 ## Getting Started
