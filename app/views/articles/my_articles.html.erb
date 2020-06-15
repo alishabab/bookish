@@ -3,22 +3,50 @@
 <h3> <%= link_to 'Write your first article',new_article_path %> </h3>
 <% end %>
 <% @articles.each do |article| %>
+  <% if @count % 6 < 3 %>
 
-  <div class="article-body">
-    <% if article.image.exists? %> 
-      <%= image_tag article.image.url, class:"article-pic" %><br/>
+    <div class="article-body">
+      <% if article.image.exists? %> 
+        <%= image_tag article.image.url, class:"article-pic" %><br/>
+      <%else%>
+      <img src=<%= default_img %> alt="default-image", class="article-pic">
+      <% end %>
+      <div class="article-text">
+        <h4>  <%= link_to article.Title, article_path(article), class: "article-title-link" %></h4>
+        <p><%=article.Text %></p>
+        <p> Written By: <i><%= article.author.name %> </i> </p>
+        <%= article.votes.count %> <span>Votes</span>
+        <br>
+        <%= link_to 'Edit', edit_article_path(article), class:'btn'%>
+        <%= link_to 'Delete', article_path(article),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, class:'btn' %>
+      </div>
+  </div>
+  <% @count += 1%>
+  
     <%else%>
-    <img src="https://images.squarespace-cdn.com/content/v1/58d9d256c534a5f7a633c089/1492830820399-WHSNL47S3P42C60F5C8W/ke17ZwdGBToddI8pDm48kPryxVU0PrpVSFhErCKkCwlZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIv_Q9wpI0X4VodK35j8Qgx3-RJtZ6lSjgdErnFfTjAfIKMshLAGzx4R3EDFOm1kBS/dark+books+open+books" alt="", class="article-pic">
-    <% end %>
-    <div class="article-text">
-      <h4>  <%= link_to article.Title, article_path(article) %></h4>
-      <p><%=article.Text %></p>
-      <p> Written By: <i><%= article.author.name %> </i> </p>
-      <%= link_to 'Edit', edit_article_path(article), class:'btn'%>
-      <%= link_to 'Delete', article_path(article),
-              method: :delete,
-              data: { confirm: 'Are you sure?' }, class:'btn' %>
-    </div>
- </div>
+
+   <div class="article-body">
+      
+        <div class="article-text">
+        <h4>  <%= link_to article.Title, article_path(article), class: "article-title-link" %></h4>
+        <p><%=article.Text %></p>
+        <p> Written By: <i><%= article.author.name %> </i> </p>
+        <%= article.votes.count %> <span>Votes</span>
+        <br>
+        <%= link_to 'Edit', edit_article_path(article), class:'btn'%>
+        <%= link_to 'Delete', article_path(article),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, class:'btn' %>
+         </div>
+      <% if article.image.exists? %> 
+        <%= image_tag article.image.url, class:"article-pic" %><br/>
+      <%else%>
+      <img src=<%= default_img %> alt="default-image", class="article-pic">
+      <% end %>
+  </div>
+  <% @count += 2%>
+  <%end%>
  <%end%>
 </div>

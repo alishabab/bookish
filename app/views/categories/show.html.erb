@@ -3,30 +3,60 @@
 <h3> No Articles yet !! Write one <%= link_to 'here', new_article_path %> </h3>
 <% end %>
 <% @articles.each do |article| %>
-
-  <div class="article-body">
-    <% if article.image.exists? %> 
-      <%= image_tag article.image.url, class:"article-pic" %><br/>
-    <%else%>
-    <img src="https://images.squarespace-cdn.com/content/v1/58d9d256c534a5f7a633c089/1492830820399-WHSNL47S3P42C60F5C8W/ke17ZwdGBToddI8pDm48kPryxVU0PrpVSFhErCKkCwlZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIv_Q9wpI0X4VodK35j8Qgx3-RJtZ6lSjgdErnFfTjAfIKMshLAGzx4R3EDFOm1kBS/dark+books+open+books" alt="", class="article-pic">
-    <% end %>
-    <div class="article-text">
-      <%=link_to @category.name, category_path(@category), class: "article-category-link"%>
-      <h4>  <%= link_to article.Title, article_path(article) %></h4>
-      <p><%=article.Text %></p>
-      <p> Written By: <i><%= article.author.name %> </i> </p>
-      <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
-      <%= article.votes.count %>
-      <% if upvoted?(article) %>
-        <%= link_to article_downvote_path(article), method: :post,class:'btn' do %>
-          Downvote <i class="fas fa-thumbs-down"></i>
+ <% if @count % 6 < 3 %>
+    <div class="article-body">
+      <% if article.image.exists? %> 
+        <%= image_tag article.image.url, class:"article-pic" %><br/>
+      <%else%>
+        <img src=<%= default_img %> alt="default-image", class="article-pic">
+      <% end %>
+      <div class="article-text">
+        <%=link_to @category.name, category_path(@category), class: "article-category-link"%>
+        <h4>  <%= link_to article.Title, article_path(article), class: "article-title-link" %></h4>
+        <p><%=article.Text %></p>
+        <p> Written By: <i><%= article.author.name %> </i> </p>
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+        <%= article.votes.count %>
+        <% if upvoted?(article) %>
+          <%= link_to article_downvote_path(article), method: :post,class:'btn' do %>
+            Downvote <i class="fas fa-thumbs-down"></i>
+          <% end %>
+      <% else %>
+        <%= link_to article_upvote_path(article), method: :post,class:'btn' do %>
+            Upvote <i class="fas fa-thumbs-up"></i>
         <% end %>
-     <% else %>
-       <%= link_to article_upvote_path(article), method: :post,class:'btn' do %>
-          Upvote <i class="fas fa-thumbs-up"></i>
-       <% end %>
-     <% end %>
-    </div>
- </div>
+      <% end %>
+      </div>
+   </div>
+     <% @count += 1%>
+    <% else %>
+ <%# Alternate %>
+    <div class="article-body">
+      
+        <div class="article-text">
+        <%=link_to @category.name, category_path(@category), class: "article-category-link"%>
+        <h4>  <%= link_to article.Title, article_path(article), class: "article-title-link" %></h4>
+        <p><%=article.Text %></p>
+        <p> Written By: <i><%= article.author.name %> </i> </p>
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+        <%= article.votes.count %>
+        <% if upvoted?(article) %>
+          <%= link_to article_downvote_path(article), method: :post,class:'btn' do %>
+            Downvote <i class="fas fa-thumbs-down"></i>
+          <% end %>
+        <% else %>
+          <%= link_to article_upvote_path(article), method: :post,class:'btn' do %>
+            Upvote <i class="fas fa-thumbs-up"></i>
+        <% end %>
+      <% end %>
+      </div>
+      <% if article.image.exists? %> 
+        <%= image_tag article.image.url, class:"article-pic" %><br/>
+      <%else%>
+      <img src=<%= default_img %> alt="default-image", class="article-pic">
+      <% end %>
+  </div>
+  <% @count += 2%>
+   <%end%>
  <%end%>
 </div>

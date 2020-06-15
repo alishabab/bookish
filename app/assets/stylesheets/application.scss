@@ -33,30 +33,12 @@ ul {
   padding: 0;
 }
 
-// .navbar {
-//   margin: 0;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   padding: 0 10px;
-//   height: 60px;
-// }
-.navbar,
-.navbar-left {
+.navbar {
   padding: 5px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.navbar-toggle {
-  display: none;
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  cursor: pointer;
-  color: #f60;
-  font-size: 24px;
 }
 
 a:hover {
@@ -68,22 +50,18 @@ a:hover {
 }
 
 .nav-logo {
+  display: inline-block;
   text-decoration: none;
   color: #4e443f;
   font-size: 36px;
 }
 
-.left-nav,
-.right-nav {
+.main-nav {
   display: flex;
 }
 
-.left-nav {
-  margin-left: 100px;
-}
-
-.active-nav {
-  display: block;
+.right-nav {
+  display: flex;
 }
 
 .nav-link {
@@ -94,13 +72,18 @@ a:hover {
 
 .active {
   color: #f60;
+  padding-bottom: 5px;
+  box-shadow: inset 0 -3px 0 0 #f60;
 }
 
 .footer {
-  margin-top: 10px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   padding: 10px;
   background-color: #4e443f;
-  min-height: 60px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -165,35 +148,4 @@ input[type=submit]:hover,
 
 .d-flex {
   display: flex;
-}
-
-@media (max-width: 760px) {
-  .footer {
-    flex-direction: column;
-  }
-
-  .navbar-toggle {
-    display: block;
-  }
-
-  .navbar,
-  .navbar-left {
-    display: block;
-  }
-
-  .left-nav,
-  .right-nav {
-    margin-left: 0;
-    display: none;
-  }
-
-  .active-nav {
-    display: block;
-  }
-
-  .left-nav li,
-  .right-nav li {
-    text-align: center;
-    margin: 15px auto;
-  }
 }

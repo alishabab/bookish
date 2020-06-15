@@ -36,7 +36,7 @@ RSpec.describe ArticlesController, type: :controller do
     context 'with invalid params' do
       it 'renders new template' do
         post :create, params: { article: { Title: '' } }
-        expect(response).to render_template(:new)
+        expect(response).to redirect_to(new_article_path)
       end
     end
   end

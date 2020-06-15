@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @categories = Category.order(priority: :desc)
+    @categories = Category.includes(:articles).order(priority: :desc).limit(4)
     article_hash = Hash.new(0)
     Vote.all.each do |vote|
       article_hash[vote.ArticleId] += 1
@@ -28,12 +28,17 @@ class ArticlesController < ApplicationController
     @categories = Category.all
     @article = Article.find(params[:id])
     @article.update(article_params)
-    @article.categories.destroy_all
+    @article.categories.delete_all
     category_ids = params[:category_ids]
     category_ids&.each do |category_id|
       @article.categories.push(Category.find(category_id))
     end
-    redirect_to @article, flash: { success: 'Article Edited Successfully' } if @article.save
+    if @article.save
+      redirect_to @article, flash: { info: 'Article Edited Successfully' }
+    else
+      flash[:error] = @article.errors.full_messages
+      redirect_back fallback_location: '/'
+    end
   end
 
   def create
@@ -47,8 +52,8 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article, flash: { success: 'Article Created Successfully' }
     else
-      flash.now[:alert] = @article.errors.full_messages
-      render :new
+      flash[:error] = @article.errors.full_messages
+      redirect_to new_article_path
     end
   end
 
@@ -58,6 +63,7 @@ class ArticlesController < ApplicationController
   end
 
   def my_articles
+    @count = 1
     @articles = current_user.articles
     @has_articles = true if @articles.length.positive?
   end

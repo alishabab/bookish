@@ -32,15 +32,3 @@ $(document).ready(function() {
       "hideMethod": "fadeOut"
   }
 });
-window.onload = function(){
-  let leftNav = document.getElementById("left-menu");
-  let rightNav = document.getElementById("right-menu");
-  let navBarToggle = document.getElementById("js-navbar-toggle");
-  navBarToggle.addEventListener("click", function () {
-    if (leftNav) {
-  leftNav.classList.toggle("active-nav");
-    }
-  rightNav.classList.toggle("active-nav");
-  });
-};
-

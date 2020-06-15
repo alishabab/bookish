@@ -20,42 +20,39 @@
 <% end %>
   
     <header> 
-      <nav class="navbar"> 
-        <div class="navbar-left">
-        <span class="navbar-toggle" id="js-navbar-toggle">
-            <i class="fas fa-bars"></i>
-        </span>  
+      <nav> 
+        <div class="navbar">
           <%= link_to 'Bookish',root_path,class: "nav-logo"%>
        
            <% if user_signed_in?%>
        
-             <ul class="left-nav" id="left-menu">
+             <ul class="main-nav">
              <% all_categories.each do |category| %>
-               <li class="nav-item"><%= link_to category.name, category_path(category), class: "nav-link #{'active' if request.original_url == category_url(category)}" %></li>
+               <li class="nav-item"><%= link_to category.name.upcase, category_path(category), class: "nav-link #{'active' if request.original_url == category_url(category)}" %></li>
               <%end%>
+               <li class="nav-item"><%= link_to 'ALL CATEGORIES', categories_path, class: "nav-link #{'active' if request.original_url == categories_url}" %></li>
             </ul>
             <%end%>
-         </div>
-        <div class="navbar-right">
-          <ul class="right-nav" id="right-menu">
+          <ul class="right-nav">
             <% if !user_signed_in? %>
-            <li class="nav-item"> <%= link_to 'Login', new_user_session_path, class: 'nav-link'%> </li>
-            <li class="nav-item"><%= link_to 'Register', new_user_registration_path, class: 'nav-link'%> </li>
+            <li class="nav-item"> <%= link_to 'LOGIN', new_user_session_path, class: 'nav-link'%> </li>
+            <li class="nav-item"><%= link_to 'REGISTER', new_user_registration_path, class: 'nav-link'%> </li>
             <%end%>
             <% if user_signed_in? %>
-            <li class="nav-item"><%= link_to "My Articles",my_articles_path,class: "nav-link"%></li>
-            <li class="nav-item"><%= link_to "Create New Article",new_article_path,class: "nav-link"%></li>
-            <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: 'nav-link' %></li>
+            <li class="nav-item"><%= link_to "MY ARTICLES",my_articles_path,class: "nav-link #{'active' if request.original_url == my_articles_url}"%></li>
+            <li class="nav-item"><%= link_to "CREATE NEW ARTICLE",new_article_path,class: "nav-link"%></li>
+            <li class="nav-item"><%= link_to "SIGN OUT", destroy_user_session_path, :method => :delete, class: 'nav-link' %></li>
             <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-search"></i></a></li>
              <% end %>
-            
           </ul> 
         </div>
       </nav>
     </header>
 
     <%= yield %>
+    <% if request.original_url != root_url %>
     <footer>
+     
       <div class="footer">
         
           <h1 class="footer-logo"> Bookish </h1>
@@ -72,6 +69,8 @@
             <a href="https://instagram.com/shabab.alii" class="footer-link"> <i class="fab fa-instagram"> </i> </a>
          </div>
       </div>
+     
     </footer>
+    <%end%>
   </body>
 </html>

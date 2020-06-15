@@ -1,0 +1,14 @@
+<div class="container">
+  <% if admin? %>
+    <%= link_to 'Add a category', new_category_path%>
+  <% end %>
+  <ul>
+  <% @categories.each do |category| %>
+  <li> <%= link_to category.name, category_path(category) %>
+  <%= link_to 'Delete', category_path(category),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, class:'btn' if admin? %>
+  </li>
+  <%end%>
+  </ul>
+</div>
