@@ -7,7 +7,11 @@
 > The project is developed using Ruby on Rails and embedded ruby for templating.
 > Navbar is dynamicaly generated from categories, only user with username as 'admin' can add or delete categories.
 > Unit tests and integration tests are written using RSpec and Capybara
+
+>Homepage
 ![screenshot](screenshot_1.png)
+
+>Articles from a category page
 ![screenshot](screenshot_2.png)
 
 ## Built With
@@ -15,7 +19,8 @@
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4.2
 - Gems used for testing: Capybara, Rspec-Rails, Shoulda-matchers and FactoryBot.
-
+## Presentation Video
+[See here](https://www.loom.com/share/0a26369ee31f47d58430501ce76efd8c)
 ## Live Demo
 [Live Demo Link](https://app-bookish.herokuapp.com/)
 
