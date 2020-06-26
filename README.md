@@ -73,6 +73,11 @@ Then open a web page and go to [port 3000 on your local machine.](http://localho
 
 Follow vendor specific instructions to deploy the application.
 
+## Potential Future Updates
+- Making the vote action asynchronus
+- Creating a wishlist
+- Buying a book
+
 ## Author
 
 👤 **Shabab Ali**
